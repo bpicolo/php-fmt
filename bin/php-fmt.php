@@ -2,8 +2,8 @@
 <?php
 
 require_once __DIR__.'/../vendor/autoload.php';
-require_once __DIR__.'/../PHPAutoFormat/PhpFormatterClient.php';
-use PhpAutoFormat\PhpFormatterClient;
+require_once __DIR__.'/../PHPFmt/PhpFormatterClient.php';
+use PhpFormat\PhpFormatterClient;
 
 $client = new PhpFormatterClient();
 $client->run();
