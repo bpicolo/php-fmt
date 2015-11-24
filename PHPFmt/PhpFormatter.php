@@ -3,12 +3,11 @@
 namespace PhpFormat;
 
 require_once 'PrettyPrinter.php';
-require_once 'RawTokenLexer.php';
 
 class PHPFormatter {
 
     public function __construct() {
-        $this->parser = new \PhpParser\Parser(new RawTokenLexer);
+        $this->parser = new \PhpParser\Parser(new \PhpParser\Lexer);
         $this->printer = new \PhpFormat\PrettyPrinter();
     }
 
