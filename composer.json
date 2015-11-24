@@ -1,0 +1,17 @@
+{
+    "name": "eat24/php-auto-format",
+    "description": "An automatic code formatter for php using AST representations",
+    "require": {
+        "nikic/php-parser": "^1.4",
+        "docopt/docopt": "^1.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "~4.0"
+    },
+    "authors": [
+        {
+            "name": "Ben Picolo",
+            "email": "benp@yelp.com"
+        }
+    ]
+}

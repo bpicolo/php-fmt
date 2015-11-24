@@ -1,0 +1,16 @@
+<?php
+
+echo "true1\n";
+echo "test some ' marks";
+
+$variable = 1;
+echo "$variable";
+echo '$variable';
+echo "$variable
+";
+echo "{$variable}\n
+";
+$foo = "bar\n";
+
+$foo = "bar
+";

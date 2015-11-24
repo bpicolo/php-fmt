@@ -1,0 +1,21 @@
+<?php
+
+$foo = array("bar", "bar","bar","bar","bar","bar","bar","bar","bar","bar","bar","bar","bar","bar","bar","bar","bar","bar",);
+
+$foo = ['bar'];
+
+
+$foo = array("bar", "bar","bar","bar",array("bar","bar","bar","bar","bar","bar","bar","bar","bar","bar","bar","bar","bar"),"bar","bar","bar","bar","bar","bar","bar","bar","bar","bar","bar","bar","bar",);
+
+$this = array_filter(
+    [1,2,3],
+    function ($i) {
+        return $i %2 == 0;
+    }
+);
+
+$this = array_filter([111111111111111, 222222222222222222222222, 33333333333333333333333333333333333333333333],
+    function ($i) {
+        return $i %2 == 0;
+    }
+);
