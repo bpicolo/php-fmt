@@ -7,11 +7,7 @@ use \PhpParser\Node\Scalar;
 use \PhpParser\Node\Stmt;
 
 class PrettyPrinter extends \PhpParser\PrettyPrinter\Standard {
-    /*
-    Modified https://github.com/tcopestake/PHP-Parser-PSR-2-pretty-printer
-    */
     protected $maxLineLength = 80;
-    protected $methodIndents = 0;
     protected $indents = 0;
     protected $totalIndents = 0;
 
