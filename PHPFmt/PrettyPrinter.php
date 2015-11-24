@@ -180,7 +180,7 @@ class PrettyPrinter extends \PhpParser\PrettyPrinter\Standard {
             // change newlines to newline literals
             $value = addcslashes($value, "\n\r\t\f\v$" . '"' . "\\");
         } else {
-            $value = addcslashes($value, '\'\\');
+            $value = addcslashes($value, '\'');
         }
         // Keep newline literals (actual \n) but remove newlines in string
         return "$quoteChar" . $value . "$quoteChar";

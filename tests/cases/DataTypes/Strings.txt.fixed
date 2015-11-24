@@ -2,6 +2,8 @@
 
 echo "true1\n";
 echo 'test some \' marks';
+$foo = 'bar\n';
+$foo = "bar\n";
 $variable = 1;
 echo "{$variable}";
 echo '$variable';
