@@ -168,18 +168,10 @@ class PrettyPrinter extends \PhpParser\PrettyPrinter\Standard {
     // Scalars
 
     public function pScalar_String(Scalar\String_ $node) {
-        $hasNewlines = strpos($node->value, "\n") !== false;
-        $quoteChar = '\'';
-        $value = $node->value;
-        if ($hasNewlines) {
-            $quoteChar = '"';
-            // change newlines to newline literals
-            $value = addcslashes($value, "\n\r\t\f\v$" . '"' . "\\");
-        } else {
-            $value = addcslashes($value, '\'');
-        }
-        // Keep newline literals (actual \n) but remove newlines in string
-        return "$quoteChar" . $value . "$quoteChar";
+        // TODO for now, send back the original string exactly as it
+        // was in code. There's some nightmarish special handling around
+        // escape sequences to think about
+        return $node->getAttribute('originalValue');
     }
 
     public function pScalar_Encapsed(Scalar\Encapsed $node) {

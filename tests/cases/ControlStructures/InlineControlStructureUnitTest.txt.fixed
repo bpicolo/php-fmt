@@ -140,9 +140,9 @@ switch ($response = \Bar::baz('bat', function ($foo) {
 $stuff = [1, 2, 3];
 foreach ($stuff as $num) {
     if ($num % 2) {
-        echo 'even';
+        echo "even";
     } else {
-        echo 'odd';
+        echo "odd";
     }
 }
 

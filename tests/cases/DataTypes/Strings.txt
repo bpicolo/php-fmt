@@ -2,7 +2,8 @@
 
 echo "true1\n";
 echo "test some ' marks";
-
+echo " \t\r\0\x0b";
+addcslashes($value, '\'');
 $foo = 'bar\n';
 $foo = 'bar
 ';

@@ -3,11 +3,12 @@
 namespace PhpFormat;
 
 require_once 'PrettyPrinter.php';
+require_once 'PHPFmtLexer.php';
 
 class PHPFormatter {
 
     public function __construct() {
-        $this->parser = new \PhpParser\Parser(new \PhpParser\Lexer);
+        $this->parser = new \PhpParser\Parser(new PHPFmtLexer);
         $this->printer = new \PhpFormat\PrettyPrinter();
     }
 
