@@ -1,15 +1,15 @@
 <?php
 
-namespace PhpAutoFormat;
+namespace PhpFormat;
 
 require_once 'PrettyPrinter.php';
 require_once 'RawTokenLexer.php';
 
-class PHPAutoFormatter {
+class PHPFormatter {
 
     public function __construct() {
         $this->parser = new \PhpParser\Parser(new RawTokenLexer);
-        $this->printer = new \PhpAutoFormat\PrettyPrinter();
+        $this->printer = new \PhpFormat\PrettyPrinter();
     }
 
     public function parseCode($code) {

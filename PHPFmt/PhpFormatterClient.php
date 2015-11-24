@@ -1,15 +1,15 @@
 <?php
 
-namespace PhpAutoFormat;
+namespace PhpFormat;
 
-require_once 'PhpAutoFormatter.php';
+require_once 'PhpFormatter.php';
 
 function get_doc() {
     return "
-    php-auto-format
+    php-fmt
 
     Usage:
-        bin/php-auto-format.php <filepath> [--inplace]
+        php-fmt.php <filepath> [--inplace]
 
     Options:
         -h --help       Show this screen.
@@ -17,10 +17,10 @@ function get_doc() {
     ";
 }
 
-class PhpAutoFormatterClient {
+class PhpFormatterClient {
 
     public function __construct() {
-        $this->formatter = new PHPAutoFormatter();
+        $this->formatter = new PHPFormatter();
     }
 
     public function run() {

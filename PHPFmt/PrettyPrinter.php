@@ -1,6 +1,6 @@
 <?php
 
-namespace PhpAutoFormat;
+namespace PhpFormat;
 
 use \PhpParser\Node\Expr;
 use \PhpParser\Node\Scalar;

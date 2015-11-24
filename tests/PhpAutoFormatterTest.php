@@ -1,8 +1,8 @@
 <?php
 
-require_once __DIR__ . '/../PHPAutoFormat/PhpAutoFormatter.php';
+require_once __DIR__ . '/../PHPFmt/PhpFormatter.php';
 
-use PhpAutoFormat\PHPAutoFormatter;
+use PhpFormat\PHPFormatter;
 
 function endswith($string, $test) {
     $strlen = strlen($string);
@@ -13,11 +13,11 @@ function endswith($string, $test) {
     return substr_compare($string, $test, $strlen - $testlen, $testlen) === 0;
 }
 
-class PhpAutoFormatterTest extends PHPUnit_Framework_TestCase
+class PhpFormatterTest extends PHPUnit_Framework_TestCase
 {
     /* Uses a lot of cases modified from PHP_CodeSniffer */
     public function setUp() {
-        $this->fmt = new PHPAutoFormatter();
+        $this->fmt = new PHPFormatter();
     }
 
     public function testAllCases() {
