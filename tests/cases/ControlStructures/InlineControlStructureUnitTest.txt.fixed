@@ -90,6 +90,7 @@ if ($a) {
     }
 
 }
+
 ?>
 <div style="text-align: right;">
     <?php
@@ -122,6 +123,7 @@ if ($this->allowShopping !== true) {
 } else {
     echo 'foo';
 }
+
 // ELSE IF split over multiple lines (not inline)
 if ($test) {
 } else {

@@ -15,6 +15,5 @@ echo "$variable
 echo "{$variable}\n
 ";
 $foo = "bar\n";
-
 $foo = "bar
 ";

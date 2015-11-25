@@ -1,0 +1,33 @@
+<?php
+
+function hello() {
+    $should = 'not_preserve_line_above_me';
+}
+
+function hello2() {
+    $should = 'not_preserve_line_below_me';
+}
+
+function hello3() {
+    $should = 'preserve_line_below_me';
+
+    $did = 'yes';
+}
+
+function hello4() {
+    $should = 'preserve_single_line_below_me';
+
+    $did = 'yes';
+}
+
+if ('hello') {
+    $var = 1;
+    $var = 2;
+} elseif (1) {
+    $var = 1;
+    $var = 2;
+} else {
+    $var = 1;
+
+    $var = 2;
+}

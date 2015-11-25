@@ -20,7 +20,9 @@ $foo = [
     "bar",
     "bar"
 ];
+
 $foo = ['bar'];
+
 $foo = [
     "bar",
     "bar",
@@ -55,9 +57,11 @@ $foo = [
     "bar",
     "bar"
 ];
+
 $this = array_filter([1, 2, 3], function ($i) {
     return $i % 2 == 0;
 });
+
 $this = array_filter(
     [111111111111111, 2.2222222222222222E+23, 3.333333333333333E+43],
     function ($i) {

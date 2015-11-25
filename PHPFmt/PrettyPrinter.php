@@ -2,14 +2,18 @@
 
 namespace PhpFormat;
 
+require_once 'NewlineNode.php';
+
 use \PhpParser\Node\Expr;
 use \PhpParser\Node\Scalar;
 use \PhpParser\Node\Stmt;
+
 
 class PrettyPrinter extends \PhpParser\PrettyPrinter\Standard {
     protected $maxLineLength = 80;
     protected $indents = 0;
     protected $totalIndents = 0;
+    protected $lastLine = null;
 
     public function addIndent() {
         $this->indents++;
@@ -278,6 +282,9 @@ class PrettyPrinter extends \PhpParser\PrettyPrinter\Standard {
         if (!$nodes) {
             return '';
         }
+        // Preserve intentional newlines in function bodies
+        $nodes = $this->whitespaceProcessNodes($nodes);
+
         $startIndent = $this->indents;
         $this->indents = 0;
 
@@ -334,6 +341,10 @@ class PrettyPrinter extends \PhpParser\PrettyPrinter\Standard {
         return '?>' . "\n" . $node->value . '<?php ';
     }
 
+    public function pNewLine($node) {
+        return '';
+    }
+
     /**
      * Pretty prints a node, maintaining indentation
      *
@@ -383,11 +394,50 @@ class PrettyPrinter extends \PhpParser\PrettyPrinter\Standard {
      * @return string Pretty printed node
      */
     public function prettyPrintExpr(Expr $node) {
-        return  $this->p($node);
+        return $this->p($node);
     }
 
     // No op this thing
     protected function pNoIndent($string) {
         return $string;
+    }
+
+    /**
+     * Preprocesses the top-level nodes to initialize pretty printer state.
+     *
+     * @param Node[] $nodes Array of nodes
+     */
+    protected function preprocessNodes(array $nodes) {
+        /* We can use semicolon-namespaces unless there is a global namespace declaration */
+        $this->canUseSemicolonNamespaces = true;
+        foreach ($nodes as $node) {
+            if ($node instanceof Stmt\Namespace_ && null === $node->name) {
+                $this->canUseSemicolonNamespaces = false;
+            }
+        }
+    }
+
+    protected function whitespaceProcessNodes(array $nodes) {
+        $processedNodes = [];
+        foreach ($nodes as $node) {
+            if (!count($processedNodes)) {
+                array_push($processedNodes, $node);
+                continue;
+            }
+            $lastNode = $processedNodes[count($processedNodes) - 1];
+            $lastLine = $lastNode->getAttribute('endLine');
+            $currentLine = $node->getAttribute('startLine');
+            if ((
+                ($currentLine - $lastLine) > 1) &&
+                !($lastNode instanceof Stmt\ClassMethod) &&
+                !($lastNode instanceof Stmt\Function_) &&
+                !($lastNode instanceof NewlineNode)
+            ) {
+                array_push($processedNodes, new NewlineNode(''));
+            }
+            array_push($processedNodes, $node);
+        }
+
+        return $processedNodes;
     }
 }
