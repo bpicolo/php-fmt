@@ -10,8 +10,10 @@ $foo = 'bar
 $variable = 1;
 echo "{$variable}";
 echo '$variable';
-echo "{$variable}\n";
-echo "{$variable}\n\n";
+echo "{$variable}
+";
+echo "{$variable}\n
+";
 $foo = "bar\n";
 $foo = "bar
 ";

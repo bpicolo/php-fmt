@@ -168,9 +168,12 @@ class PrettyPrinter extends \PhpParser\PrettyPrinter\Standard {
     // Scalars
 
     public function pScalar_String(Scalar\String_ $node) {
-        // TODO for now, send back the original string exactly as it
-        // was in code. There's some nightmarish special handling around
-        // escape sequences to think about
+        // Cowardly refuse to touch people's multiline strings
+        // It is 100% impossible for us to guarantee unchanged semantics
+        // and keep single strings otherwise. How do you know they don't want
+        // those 8 tabs to stay instead of them being used for indentation?
+        // You don't, so...keep it. gofmt seems to refuse to touch strings as
+        // well
         return $node->getAttribute('originalValue');
     }
 
@@ -184,6 +187,9 @@ class PrettyPrinter extends \PhpParser\PrettyPrinter\Standard {
         foreach ($encapsList as $element) {
             if (is_string($element)) {
                 $return .= addcslashes($element, "\n\r\t\f\v$" . $quote . "\\");
+            } elseif ($element->getAttribute('originalValue')) {
+                // Matches normal strings inside thise variable interpolated string
+                $return .= $this->p($element);
             } else {
                 $return .= '{' . $this->p($element) . '}';
             }
@@ -289,6 +295,7 @@ class PrettyPrinter extends \PhpParser\PrettyPrinter\Standard {
 
         foreach ($formattedNodes as &$node) {
             // TODO is there a way to kill rtrim? Not sure.
+            // Also this seems messy but shruuuug
             $node = rtrim(str_repeat('    ', $startIndent).implode(
                 "\n".str_repeat('    ', $startIndent),
                 explode("\n", $node)

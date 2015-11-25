@@ -1,7 +1,6 @@
 # php-fmt
 php-fmt is an in-progress code formatter built on top of php-parser, which builds
-an AST (abstract-syntax-tree) for PHP code. php-parser is the precursor to PHP7s
-builtin AST, and as such is a very well built bit of code.
+an AST (abstract-syntax-tree) for PHP code.
 
 As opposed to other parsers, which fix formatting mistakes, php-fmt
 establishes one true format. That is, given equivalent code with any formatting
