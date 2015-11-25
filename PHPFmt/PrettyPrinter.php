@@ -138,12 +138,12 @@ class PrettyPrinter extends \PhpParser\PrettyPrinter\Standard {
         $method_name = $this->pObjectProperty($node->name);
         $method_params = $this->pCommaSeparated($node->args);
 
-        $line = $this->pVarOrNewExpr($node->var) . '->' . $method_name
+        $line = $this->pDereferenceLhs($node->var). '->' . $method_name
              . '(' . $method_params . ')';
 
         if (($this->shouldNewlineBreakArguments($line) && $node->args)) {
             $method_params = $this->pCommaSeparated($node->args, true);
-            $line = $this->pVarOrNewExpr($node->var) . '->' . $method_name
+            $line = $this->pDereferenceLhs($node->var). '->' . $method_name
                 . '('
                 . $method_params
                 . ')';
@@ -177,6 +177,21 @@ class PrettyPrinter extends \PhpParser\PrettyPrinter\Standard {
     public function pScalar_Encapsed(Scalar\Encapsed $node) {
         return '"' . $this->pEncapsList($node->parts, '"') . '"';
     }
+
+    /** @internal */
+    public function pEncapsList(array $encapsList, $quote) {
+        $return = '';
+        foreach ($encapsList as $element) {
+            if (is_string($element)) {
+                $return .= addcslashes($element, "\n\r\t\f\v$" . $quote . "\\");
+            } else {
+                $return .= '{' . $this->p($element) . '}';
+            }
+        }
+
+        return $return;
+    }
+
 
     // Control flow
 

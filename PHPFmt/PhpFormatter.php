@@ -5,10 +5,12 @@ namespace PhpFormat;
 require_once 'PrettyPrinter.php';
 require_once 'PHPFmtLexer.php';
 
+use PhpParser\ParserFactory;
+
 class PHPFormatter {
 
     public function __construct() {
-        $this->parser = new \PhpParser\Parser(new PHPFmtLexer);
+        $this->parser = (new ParserFactory)->create(ParserFactory::PREFER_PHP5, new \PhpFormat\PHPFmtLexer);
         $this->printer = new \PhpFormat\PrettyPrinter();
     }
 

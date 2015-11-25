@@ -2,7 +2,7 @@
     "name": "eat24/php-auto-format",
     "description": "An automatic code formatter for php using AST representations",
     "require": {
-        "nikic/php-parser": "^1.4",
+        "nikic/php-parser": "2.0.0beta1",
         "docopt/docopt": "^1.0"
     },
     "require-dev": {
