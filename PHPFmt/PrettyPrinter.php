@@ -94,10 +94,10 @@ class PrettyPrinter extends \PhpParser\PrettyPrinter\Standard {
              . ' {';
 
         if ($node->stmts) {
-            $result .= $this->indentedStmt($node->stmts);
+            $result .= "\n" . $this->indentedStmt($node->stmts);
             $result .= "\n";
         }
-        $result .= '}'."\n";
+        $result .= '}' . "\n";
 
         return $result;
     }
@@ -434,6 +434,7 @@ class PrettyPrinter extends \PhpParser\PrettyPrinter\Standard {
                 ($currentLine - $lastLine) > 1) &&
                 !($lastNode instanceof Stmt\ClassMethod) &&
                 !($lastNode instanceof Stmt\Function_) &&
+                !($lastNode instanceof Stmt\Class_ ) &&
                 !($lastNode instanceof NewlineNode)
             ) {
                 array_push($processedNodes, new NewlineNode(''));

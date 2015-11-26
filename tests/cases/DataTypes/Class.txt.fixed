@@ -1,0 +1,52 @@
+<?php
+
+class Foo extends Bar implements Baz {}
+
+class Foo extends Bar implements Baz {
+
+    public function foo() {
+        $foo = 'bar';
+    }
+
+    private function bar() {
+        $foo = 'barbaz';
+    }
+
+    private function baz() {
+        $foo = 'barbazboiz';
+    }
+
+}
+
+class Foo extends Bar implements Baz {
+
+    public function foo() {
+        $foo = 'bar';
+    }
+
+    private function bar() {
+        $foo = 'barbaz';
+    }
+
+    private function baz() {
+        $foo = 'barbazboiz';
+    }
+
+}
+
+class Foo extends Bar implements Baz {
+
+    public function foo() {
+        $foo = 'bar';
+    }
+
+    private function bar() {
+        $foo = 'barbaz';
+    }
+
+    private function baz() {
+        $foo = 'barbazboiz';
+    }
+
+}
+
