@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/bpicolo/php-fmt.svg?branch=master)](https://travis-ci.org/bpicolo/php-fmt)
+
 # php-fmt
 php-fmt is an in-progress code formatter built on top of php-parser, which builds
 an AST (abstract-syntax-tree) for PHP code.
