@@ -1,0 +1,18 @@
+<?php
+
+if (1) {
+} elseif (1) {
+}
+
+if (1) {
+} elseif (1) {
+} else {
+    $foo = 'bar';
+}
+
+if (1) {
+} elseif (1) {
+} else {
+    // hi
+    $foo = 'bar';
+}

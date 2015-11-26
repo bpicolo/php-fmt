@@ -128,7 +128,6 @@ if ($this->allowShopping !== true) {
 if ($test) {
 } else {
     if ($test) {
-    } else {
     }
 }
 switch ($response = \Bar::baz('bat', function ($foo) {

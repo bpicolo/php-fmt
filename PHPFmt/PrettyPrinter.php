@@ -219,6 +219,9 @@ class PrettyPrinter extends \PhpParser\PrettyPrinter\Standard {
     }
 
     public function pStmt_Else(Stmt\Else_ $node) {
+        if (!$node->stmts && !$node->getAttribute('comments', array())) {
+            return '';
+        }
         return ' else {' . $this->indentedStmt($node->stmts) . "\n" . '}';
     }
 
