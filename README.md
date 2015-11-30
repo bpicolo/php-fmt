@@ -15,7 +15,34 @@ I'm not a fan of. Not to mention, PSR-N leave wiggle room for exact formats in
 certain areas, whereas php-fmt will spit out all code exactly the same
 way, which leaves no room for fuzzy or optional formatting decisions.
 
+## Example
+```
+<?php
+ class Foo extends Bar {private function hello() {/* a comment */ $foo = 1; return $foo;}}
+ function do_a_thing($with_some_really_really_really_long, $arguments_that_are_way_too_long_for_anybody_to_enjoy, $seriously_guys) {return 'foo';}
+```
+
+```
+<?php
+
+class Foo extends Bar {
+
+    private function hello() {
+        /* a comment */
+        $foo = 1;
+        return $foo;
+    }
+
+}
+
+function do_a_thing($with_some_really_really_really_long, $arguments_that_are_way_too_long_for_anybody_to_enjoy, $seriously_guys) {
+    return 'foo';
+}
+```
+
 ## Issues in progress
 * Comments have some degenerate cases where they can end up in odd places, or if
 they are the last thing in a file will be removed entirely.
 * Other than that, we're pretty close to a sane initial release
+
+
