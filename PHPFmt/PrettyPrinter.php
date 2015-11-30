@@ -181,11 +181,6 @@ class PrettyPrinter extends \PhpParser\PrettyPrinter\Standard {
         return $node->getAttribute('originalValue');
     }
 
-    public function pStmt_Comment(Stmt\Comment $node) {
-        // Render the damn comment
-        return trim($node->value);
-    }
-
     public function pScalar_Encapsed(Scalar\Encapsed $node) {
         return '"' . $this->pEncapsList($node->parts, '"') . '"';
     }
