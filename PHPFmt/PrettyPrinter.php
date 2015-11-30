@@ -72,7 +72,7 @@ class PrettyPrinter extends \PhpParser\PrettyPrinter\Standard {
         )) {
             $method_params = $this->pCommaSeparated($node->params, true);
             $result = 'function ' . ($node->byRef ? '&' : '') . $node->name
-                . '(' . $this->pCommaSeparated($node->params) . ')'
+                . '(' . $method_params . ')'
                 . (null !== $node->returnType ? ' : ' . $this->pType($node->returnType) : '')
                 . ' {';
         }

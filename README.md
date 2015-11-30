@@ -35,7 +35,11 @@ class Foo extends Bar {
 
 }
 
-function do_a_thing($with_some_really_really_really_long, $arguments_that_are_way_too_long_for_anybody_to_enjoy, $seriously_guys) {
+function do_a_thing(
+    $with_some_really_really_really_long,
+    $arguments_that_are_way_too_long_for_anybody_to_enjoy,
+    $seriously_guys
+) {
     return 'foo';
 }
 ```
