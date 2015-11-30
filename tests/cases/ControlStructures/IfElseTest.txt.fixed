@@ -1,5 +1,6 @@
 <?php
 
+// Starting comment
 if (1) {
 } elseif (1) {
 }
@@ -16,3 +17,16 @@ if (1) {
     // hi
     $foo = 'bar';
 }
+
+if (1) {
+    //hi
+} elseif (1) {
+    /* hello friends */
+} else {
+    //hi1
+    //hi2
+
+    //hi3
+}
+
+// Final comment of file
